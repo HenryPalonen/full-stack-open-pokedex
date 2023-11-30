@@ -1,0 +1,12 @@
+name: Scheduled Periodic Health Check
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # This schedules the check to run daily at midnight UTC
+
+jobs:
+  health_ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Health Endpoint
+        run: curl -f https://full-stack-open-pokedex-henry.fly.dev/health
